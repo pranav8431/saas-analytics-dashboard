@@ -16,36 +16,6 @@ export interface AggregationOptions {
   period: AggregationPeriod;
 }
 
-function getPeriodTruncate(period: AggregationPeriod): string {
-  switch (period) {
-    case 'hour':
-      return 'hour';
-    case 'day':
-      return 'day';
-    case 'week':
-      return 'week';
-    case 'month':
-      return 'month';
-    default:
-      return 'day';
-  }
-}
-
-function getPeriodInterval(period: AggregationPeriod): string {
-  switch (period) {
-    case 'hour':
-      return '1 hour';
-    case 'day':
-      return '1 day';
-    case 'week':
-      return '1 week';
-    case 'month':
-      return '1 month';
-    default:
-      return '1 day';
-  }
-}
-
 async function aggregateByHour(tenantId: string, eventType: string, startDate: Date, endDate: Date) {
   return sql`
     SELECT

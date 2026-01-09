@@ -47,7 +47,6 @@ export function validateCSVData(
   const validRows: Record<string, any>[] = [];
 
   // Check for required columns with flexible matching
-  const columnLower = columns.map((c) => c.toLowerCase());
   const timestampCol = columns.find((c) =>
     ['timestamp', 'time', 'date', 'created_at', 'event_time'].includes(c.toLowerCase())
   );

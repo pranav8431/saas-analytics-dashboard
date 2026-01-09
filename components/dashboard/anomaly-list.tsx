@@ -87,7 +87,7 @@ export function AnomalyList({
           </div>
           <p className="text-gray-600 font-medium">No anomalies detected</p>
           <p className="text-sm text-gray-500 mt-1">
-            All metrics are within expected thresholds. Click "Detect Anomalies" to run analysis.
+            All metrics are within expected thresholds. Click &quot;Detect Anomalies&quot; to run analysis.
           </p>
         </div>
       </div>
