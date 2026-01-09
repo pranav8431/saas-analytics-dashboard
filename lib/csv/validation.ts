@@ -105,7 +105,7 @@ export function validateCSVData(
         _valueCol: valueCol,
       });
     } else {
-      result.error.errors.forEach((err) => {
+      result.error.issues.forEach((err) => {
         errors.push({
           row: rowNumber,
           field: err.path.join('.') || 'unknown',
