@@ -12,19 +12,24 @@ A production-grade, multi-tenant analytics platform built with Next.js 14, Postg
 ### Core Capabilities
 - **Multi-Tenant Architecture**: Complete data isolation per organization with tenant_id filtering
 - **Role-Based Access Control**: OWNER, ADMIN, and MEMBER roles with granular permissions
-- **CSV Data Ingestion**: Upload CSV files with automatic schema inference and intelligent field mapping
+- **Tenant Visibility**: Dashboard header displays organization name and user role
+- **Tenant-Scoped Summary**: Data summary card showing total events, event types, and last upload (per tenant)
+- **CSV Data Ingestion**: Upload CSV files with Zod schema validation and intelligent field mapping
+- **Sample CSV Download**: Download a sample CSV file to understand the required format
 - **Real-Time Analytics**: Time-series charts with aggregations (sum, avg, count, min, max, stddev)
-- **Anomaly Detection**: Statistical anomaly detection using Z-score and trend analysis
+- **Anomaly Detection**: Statistical anomaly detection with clear explanations (Z-score and trend analysis)
 - **Secure Authentication**: Clerk-based authentication with OAuth support
-- **Production-Ready**: Type-safe, scalable architecture optimized for Vercel deployment
+- **Production-Ready**: Type-safe, scalable architecture optimized for Vercel free-tier deployment
 
 ### Technical Highlights
 - Server Components by default for optimal performance
 - Server Actions for type-safe mutations
+- Zod schema validation for CSV uploads
 - PostgreSQL with Row Level Security (RLS) ready
 - Optimized database queries with proper indexing
 - Responsive design with Tailwind CSS
 - Chart visualizations with Recharts
+- Proper empty and error states for better UX
 
 ## 📋 Table of Contents
 
@@ -99,6 +104,7 @@ A production-grade, multi-tenant analytics platform built with Next.js 14, Postg
 
 ### Data Processing
 - **PapaParse**: CSV parsing with schema inference
+- **Zod**: Schema validation for CSV rows (timestamp, event_type, value)
 - **date-fns**: Date manipulation and formatting
 
 ### Deployment
@@ -342,7 +348,8 @@ saas/
 │   │   ├── types.ts            # TypeScript types
 │   │   └── queries.ts          # Type-safe queries
 │   ├── csv/
-│   │   └── parser.ts           # CSV parsing + schema inference
+│   │   ├── parser.ts           # CSV parsing + schema inference
+│   │   └── validation.ts       # Zod schema validation
 │   ├── analytics/
 │   │   ├── aggregation.ts      # Time-series aggregations
 │   │   └── anomaly-detection.ts # Anomaly detection algorithms
@@ -381,6 +388,7 @@ saas/
 - **Z-Score Method**: Detects outliers based on standard deviation
 - **Trend Analysis**: Identifies sudden spikes/drops
 - **Configurable Sensitivity**: Adjustable threshold (1-5)
+- **Clear Explanations**: Each anomaly shows statistical reasoning (e.g., "Spike detected: value exceeded mean + 2.5σ. Baseline: 42 | Observed: 78")
 - Statistical approach suitable for time-series data
 
 ### 6. Pre-Aggregation Strategy
